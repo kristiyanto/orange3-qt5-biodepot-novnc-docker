@@ -17,6 +17,9 @@ RUN git clone https://github.com/kanaka/noVNC.git && \
     cd noVNC/utils && git clone https://github.com/kanaka/websockify websockify
 
 ## ORANGE3
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+RUN virtualenv --python=python3 --system-site-packages orange3venv
+RUN source orange3venv/bin/activate
 RUN git clone https://github.com/biolab/orange3.git 
 RUN pip3 install --upgrade pip
 RUN pip3 install -r orange3/requirements-core.txt
