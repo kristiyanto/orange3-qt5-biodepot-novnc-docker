@@ -12,9 +12,9 @@ RUN git clone https://github.com/kanaka/noVNC.git && \
     cd noVNC/utils && git clone https://github.com/kanaka/websockify websockify
 RUN git clone https://github.com/biolab/orange3.git 
 RUN pip3 install --upgrade pip
-RUN pip3 install pyqt5 docker-py
 RUN pip3 install -r orange3/requirements-core.txt
 RUN pip3 install -r orange3/requirements-gui.txt
+RUN pip3 install docker-py
 
 RUN apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
 
