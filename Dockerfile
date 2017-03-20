@@ -14,11 +14,16 @@ RUN git clone https://github.com/biolab/orange3.git
 RUN pip3 install --upgrade pip
 RUN pip3 install -r orange3/requirements-core.txt
 RUN pip3 install -r orange3/requirements-gui.txt
-RUN pip3 install docker-py
+RUN pip3 install docker-py numpy
+WORKDIR /root/orange3
+RUN pip3 install -e .
+
+ADD biodepot /root/biodepot
+RUN pip3 install -e /root/biodepot
 
 RUN apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
-
 RUN chmod 0755 /root/startup.sh
 
-
+WORKDIR /root
 CMD /root/startup.sh
+
